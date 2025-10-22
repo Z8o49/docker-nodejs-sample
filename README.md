@@ -2,47 +2,46 @@
 
 In dieser Abschlussaufgabe werden alle erlernten Fähigkeiten in den Bereichen **Markdown**, **Git**, **GitHub** und **Docker** kombiniert. Die Aufgabe besteht darin, eine ToDo-Applikation zu erstellen und diese in einem Docker-Container bereitzustellen.
 
-### **Aufgabenstellung:**
+## Klonen des Repositories
 
-1. **GitHub-Fork erstellen:**
-   - Erstelle einen **Fork** des folgenden GitHub-Repositories: [docker-nodejs-sample](https://github.com/ICT-BLJ/docker-nodejs-sample).
-   - Clone deinen Fork lokal auf deinen Computer.
+![Klonen des Repositories](images/fork-github.png)
+Von dort aus habe ich auf "Fork" geklickt, um eine Kopie des Repositories zu erstellen. Nachdem ich die Kopie erstellt hatte, habe ich auf "Code" geklickt und den Befehl unter HTTPS kopiert.
+Danach habe ich PowerShell geöffnet, habe zum richtigen Verzeichnis gewechselt und den Befehl `git clone https://github.com/Z8o49/docker-nodejs-sample.git` ausgeführt, um das Repository zu klonen.
 
-2. **Erstellen einer README-Datei in Markdown:**
-   - Erstelle eine **README.md** Datei im Root-Verzeichnis des Projekts.
-   - Die README soll alle Schritte zur **Installation des Projekts** enthalten. Dazu gehören:
-     - Klonen des Repositories
-     - Installation der notwendigen Pakete
-     - Docker-Konfiguration und -Installation
-     - Starten der Applikation in einem Docker-Container
-   - Nutze [Markdown](https://www.markdownguide.org/cheat-sheet/) für die Struktur und Formatierung der Datei.
+## Installation der notwendigen Pakete
 
-3. **Dokumentation der Vorgehensweise:**
-   - Verfasse eine vollständige **Dokumentation in Word**, in der die Arbeitsschritte beschrieben werden. Diese Schritte sind:
-     - Klonen des Repositories
-     - Einrichtung der Entwicklungsumgebung
-     - Erstellung der README.md
-     - Verwendung von Git (Commit, Push)
-     - Erstellung und Nutzung von Docker-Containern
-   - Verwende die während des Office-Kurses erarbeiteten Kenntnisse für das Erstellen dieses Dokuments.
+Ich habe über den Link auf Moodle die Anweisungen für die Installation der notwendigen Pakete gelesen und die jeweiligen Commands um die Pakete zu installieren ausgeführt. Danach musste ich noch ein paar Fragen beantworten, die sich auf die Installation der Pakete beziehen. Schlussendlich habe ich noch kurz überpruft, ob alle Pakete installiert wurden.
 
-4. **Dockerize das Node.js-Projekt:**
-   - Verfolge die Anleitung unter [docs.docker.com](https://docs.docker.com/guides/language/nodejs/containerize/) ab dem Schritt **"Initialize Docker assets"**.
-   - Dein Ziel ist es, das Projekt in einem Docker-Container lauffähig zu machen, sodass am Ende eine **ToDo-Applikation** in einem Docker-Container bereitsteht.
+## Docker-Konfiguration und -Installation
 
-5. **Git-Workflows:**
-   - Arbeite mit **Git**, um Änderungen regelmäßig zu committen und auf GitHub zu pushen.
-   - Verwende sinnvolle Commit-Nachrichten, um deinen Fortschritt zu dokumentieren.
-   - Stelle sicher, dass dein finaler Stand auf GitHub vorhanden ist.
+Über den Link auf Moodle bin ich auf die Seite von [Docker](https://www.docker.com/products/docker-desktop/) gekommen und musste dan dort die passende Download Option für Windows auswählen. Danach habe ich diese heruntergeladen und installiert. Bevor ich Docker verwenden konnte, musste ich noch WSL2 updaten und meinen Laptop neu starten. Mit dem Beispiel von Moodle habe ich dann überprüft ob Docker funktioniert und konnte es erfolgreich starten. Zum Schluss habe ich noch die [Visual Studio Code Extension für Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) heruntergeladen.
 
-6. **Abgabe:**
-   - **Dokumentation:** Lade die erstellte Word-Dokumentation (inkl. Screenshots und Beschreibung der Schritte) in dein Repository hoch.
-   - **GitHub-Link:** Stelle den Link zu deinem GitHub-Repository bereit, das den finalen Stand des Projekts enthält.
+## Starten der Applikation in einem Docker-Container
 
-### **Ziele der Aufgabe:**
-- Anwendung und Vertiefung von Git und GitHub.
-- Verfassen einer strukturierten Anleitung mit Markdown.
-- Containerisieren einer Node.js-Anwendung mit Docker.
-- Dokumentation des gesamten Prozesses in einem Word-Dokument.
-  
-Viel Erfolg bei der Umsetzung!
+### Anwendung gestartet
+
+Ich habe im Terminal in das Verzeichnis `docker-nodejs-sample` gewechselt und folgenden Befehl ausgeführt:
+
+```bash
+docker compose up --build
+```
+
+Anschließend habe ich meinen Browser geöffnet und folgende Adresse aufgerufen:
+http://localhost:3000
+Ich habe nun meine einfache ToDo-Applikation gesehen. Um die Anwendung zu stoppen, habe ich im Terminal `Strg + C` gedrückt.
+
+### Anwendung im Hintergrund gestartet
+
+Ich konnte die Anwendung auch im Hintergrund (detached mode) ausführen, indem ich die Option `-d` hinzugefügt habe. Dazu habe ich im Verzeichnis `docker-nodejs-sample` folgenden Befehl ausgeführt:
+
+```bash
+docker compose up --build -d
+```
+
+Anschließend habe ich meinen Browser geöffnet und die Adresse aufgerufen:
+[http://localhost:3000](http://localhost:3000)
+Die ToDo-Applikation lief nun im Hintergrund. Um sie zu stoppen, habe ich den folgenden Befehl genutzt:
+
+```bash
+docker compose down
+```
